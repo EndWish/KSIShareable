@@ -1,0 +1,3 @@
+[submodule "UI/Dialog"]
+	path = UI/Dialog
+	url = https://github.com/EndWish/KSIShareable-UI-Dialog.git
