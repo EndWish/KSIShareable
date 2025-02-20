@@ -4,3 +4,6 @@
 [submodule "UI/Button"]
 	path = UI/Button
 	url = https://github.com/EndWish/KSIShareable-UI-Button.git
+[submodule "Input"]
+	path = Input
+	url = https://github.com/EndWish/KSIShareable-Input.git
