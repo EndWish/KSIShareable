@@ -1,9 +1,10 @@
 {
   "name": "com.kimsiin.ksishareable",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "displayName": "KSIShareable",
   "description": "A project that provides a system to help game development.",
   "unity": "2022.3",
+
   "dependencies": {
     "com.unity.localization": "1.4.2",
     "com.unity.textmeshpro": "3.0.6"
@@ -12,5 +13,29 @@
   "author": {
     "name": "SiIn Kim",
     "email": "ksi8548@gmail.com"
-  }
+  },
+
+  "samples": [
+    {
+      "displayName": "AudioManager",
+      "description": "Example",
+      "path": "Samples/AudioManager"
+    },
+    {
+      "displayName": "ButtonActions",
+      "description": "Example",
+      "path": "Samples/ButtonActions"
+    },
+    {
+      "displayName": "ConfirmationDialog",
+      "description": "Example",
+      "path": "Samples/ConfirmationDialog"
+    },
+    {
+      "displayName": "PriorityKeyHandler",
+      "description": "Example",
+      "path": "Samples/PriorityKeyHandler"
+    }
+  ]
+
 }
