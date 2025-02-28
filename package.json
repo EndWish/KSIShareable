@@ -1,0 +1,16 @@
+{
+  "name": "com.kimsiin.ksishareable",
+  "version": "0.1.0",
+  "displayName": "KSIShareable",
+  "description": "A project that provides a system to help game development.",
+  "unity": "2022.3",
+  "dependencies": {
+    "com.unity.localization": "1.4.2",
+    "com.unity.textmeshpro": "3.0.6"
+  },
+
+  "author": {
+    "name": "SiIn Kim",
+    "email": "ksi8548@gmail.com"
+  }
+}
