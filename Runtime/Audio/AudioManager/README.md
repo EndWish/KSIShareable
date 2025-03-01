@@ -28,17 +28,17 @@
 
 ## 설정
 1. `AudioLibrary` ScriptableObject를 생성하고, 오디오 클립을 추가합니다.
-![alt text](READMEImage/CreateAudioLibrary.png)  
+![alt text](READMEImage~/CreateAudioLibrary.png)  
 
 2. `AudioManager` 프리팹을 씬에 추가하고 `audioLibrary`에 `AudioLibrary`를 할당합니다.  
-![alt text](READMEImage/Component01.png) 
+![alt text](READMEImage~/Component01.png) 
 
 3. 볼륨 조절 및 채널 개수를 설정합니다.
 
 ## 사용 방법
 
 ### 컴포넌트
-![alt text](READMEImage/Component02.png)
+![alt text](READMEImage~/Component02.png)
 #### Dont Destroy On Load - 체크 시 DontDestroyOnLoad()함수를 실행하여 Scene이 변경되어도 GameObject가 삭제되지 않는다
 #### AudioLibrary - AudioLibrary 에셋을 연결하여 키값을 이용해 AudioClip에 접근할 수 있다 ([ShowScriptableObject적용](../../../Editor/ShowScriptableObject/README.md))
 #### BgmVolume - Bgm의 볼륨을 조절할 수 있다 (0 ~ 1)
