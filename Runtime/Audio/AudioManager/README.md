@@ -40,7 +40,7 @@
 ### 컴포넌트
 ![alt text](READMEImage/Component02.png)
 #### Dont Destroy On Load - 체크 시 DontDestroyOnLoad()함수를 실행하여 Scene이 변경되어도 GameObject가 삭제되지 않는다
-#### AudioLibrary - AudioLibrary 에셋을 연결하여 키값을 이용해 AudioClip에 접근할 수 있다 (연결하면 AudioLibrary의 정보를 AudioManager인스펙터 창에서 바로 확인가능하다)
+#### AudioLibrary - AudioLibrary 에셋을 연결하여 키값을 이용해 AudioClip에 접근할 수 있다 ([ShowScriptableObject적용](../../../Editor/ShowScriptableObject/README.md))
 #### BgmVolume - Bgm의 볼륨을 조절할 수 있다 (0 ~ 1)
 #### SfxVolume - Sfx의 볼륨을 조절할 수 있다 (0 ~ 1)
 #### ChannelCount - 동시에 재생할 수 있는 Sfx의 최대 개수 (런타임 변경 불가)
