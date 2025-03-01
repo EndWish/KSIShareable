@@ -28,8 +28,10 @@ namespace KSIShareable.UI.Dialog
         }
 
         protected ConfirmationDialog Init(UnityAction actionOnYes, UnityAction actionOnNo) {
-            if(actionOnYes != null)
+            OnClickYes.RemoveAllListeners();
+            if (actionOnYes != null)
                 this.OnClickYes.AddListener(actionOnYes);
+            OnClickNo.RemoveAllListeners();
             if (actionOnNo != null)
                 this.OnClickNo.AddListener(actionOnNo);
 
