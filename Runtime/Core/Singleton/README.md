@@ -37,6 +37,9 @@ KSIShareable에서는 다양한 환경에서 활용할 수 있도록 여러 형�
 public class GameManager : MonoSingleton<GameManager> {
     protected override void Awake() {
         base.Awake();
+        if (gameObject.IsDestroyed()) {
+           return;
+        }
         Debug.Log("GameManager Initialized");
     }
 }

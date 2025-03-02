@@ -65,6 +65,33 @@ AudioManager.Instance.BgmVolume = 0.8f;
 AudioManager.Instance.SfxVolume = 0.6f;
 ```
 
+### 부가 컴포넌트
+#### ButtonSfxPlayer (🔊 버튼 클릭 시 SFX 자동 재생)
+![alt text](READMEImage~/ButtonSfxPlayerComponent.png)  
+`Button` 컴포넌트가 있는 게임오브젝트에 `ButtonSfxPlayer` 컴포넌트 추가  
+Sfx Key - `AudioLibrary`에 추가한 AudioClip의 Key를 입력
+<details>
+  <summary>코드 보기</summary>
+
+```csharp
+public class ButtonSfxPlayer : MonoBehaviour
+{
+    [SerializeField] private string sfxKey = "ButtonClick";
+
+    private void Awake() {
+        Button button = GetComponent<Button>();
+        if (button != null) {
+            button.onClick.AddListener(() => PlaySfx());
+        }
+    }
+
+    private void PlaySfx() {
+        AudioManager.Instance.PlaySfx(sfxKey);
+    }
+}
+```
+</details>
+
 ## API
 
 ### `AudioManager`

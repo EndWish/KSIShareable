@@ -1,15 +1,12 @@
+using KSIShareable.Core;
 using KSIShareable.Editor;
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace KSIShareable.Audio
 {
-    public class AudioManager : MonoBehaviour
+    public class AudioManager : MonoSingleton<AudioManager>
     {
-        public static AudioManager Instance { get; private set; }
-        [SerializeField] private bool dontDestroyOnLoad = true;
-
         [ShowScriptableObject, Space(10)]
         [SerializeField] private AudioLibrary audioLibrary;
 
@@ -43,18 +40,13 @@ namespace KSIShareable.Audio
         protected AudioSource[] sfxSources;
         private int channelIndex;
 
-        protected void Awake() {
-            if (Instance == null) {
-                Instance = this;
-                if (dontDestroyOnLoad) {
-                    DontDestroyOnLoad(gameObject);
-                }
-                audioLibrary.Init();
-                Init();
+        protected override void Awake() {
+            base.Awake();
+            if (gameObject.IsDestroyed()) {
+                return;
             }
-            else {
-                Destroy(gameObject);
-            }
+            audioLibrary.Init();
+            Init();
         }
 
         private void Init() {
