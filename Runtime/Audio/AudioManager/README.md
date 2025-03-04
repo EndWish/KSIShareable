@@ -24,6 +24,7 @@
 - **BGM 및 SFX 재생, 정지, 일시 정지 지원**
 - **효과음 다중 채널 시스템 적용** (동시에 여러 효과음 재생 가능)
 - **볼륨 조절 기능 지원** (`BgmVolume`, `SfxVolume`)
+- **Fade In/Out 지원**
 - **`AudioLibrary`를 활용한 사운드 관리**
 
 ## 설정
@@ -96,16 +97,27 @@ public class ButtonSfxPlayer : MonoBehaviour
 
 ### `AudioManager`
 ```csharp
+public void FadeBgm(string key, float duration)
+public void FadeBgm(AudioClip clip, float duration)
+
 public void PlayBgm(string key);
+public void PlayBgm(AudioClip clip);
+
 public void StopBgm();
 public void PauseBgm();
 public void UnPauseBgm();
+
+public void PlaySfx(AudioClip clip);
 public void PlaySfx(string key);
 ```
+- `FadeBgm(key, duration)`: 키 값에 해당하는 배경음을 Fade In, 이전 배경음을 Fade Out 하여 재생합니다.
+- `FadeBgm(clip, duration)`: clip 배경음을 Fade In, 이전 배경음을 Fade Out 하여 재생합니다.
+- `PlayBgm(clip)`: clip 배경음을 재생합니다.
 - `PlayBgm(key)`: 키 값에 해당하는 배경음을 재생합니다.
 - `StopBgm()`: 현재 재생 중인 배경음을 정지합니다.
 - `PauseBgm()`: 현재 배경음을 일시 정지합니다.
 - `UnPauseBgm()`: 일시 정지된 배경음을 다시 재생합니다.
+- `PlaySfx(clip)`: clip 효과음을 재생합니다.
 - `PlaySfx(key)`: 키 값에 해당하는 효과음을 재생합니다.
 
 ### `AudioLibrary`

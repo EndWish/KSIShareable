@@ -1,27 +1,53 @@
 using KSIShareable.Core;
 using KSIShareable.Editor;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace KSIShareable.Audio
 {
     public class AudioManager : MonoSingleton<AudioManager>
     {
         [ShowScriptableObject, Space(10)]
-        [SerializeField] private AudioLibrary audioLibrary;
+        [SerializeField, Required] private AudioLibrary audioLibrary;
 
         [SerializeField, Range(0, 1)] private float bgmVolume = 0.5f;
-        public float BgmVolume { 
-            get { return bgmVolume; } 
-            set { 
-                bgmVolume = value; 
-                if(bgmSource != null) {
-                    bgmSource.volume = bgmVolume;
+        public float BgmVolume {
+            get { return bgmVolume; }
+            set {
+                bgmVolume = value;
+                if (bgmSources != null) {
+                    for (int i = 0; i < bgmSources.Length; i++) {
+                        bgmSources[i].volume = bgmVolume;
+                    }
                 }
             }
         }
-        AudioSource bgmSource;
+        [SerializeField] private AudioMixerGroup bgmMixerGroup;
+        public AudioMixerGroup BgmMixerGroup {
+            get { return bgmMixerGroup; }
+            set {
+                bgmMixerGroup = value;
+                if (bgmSources != null) {
+                    for (int i = 0; i < bgmSources.Length; i++) {
+                        bgmSources[i].outputAudioMixerGroup = bgmMixerGroup;
+                    }
+                }
+            }
+        }
 
+        private AudioSource[] bgmSources;
+        private int curBgmIndex;
+        private AudioSource curBgmSource {
+            get { return bgmSources[curBgmIndex]; }
+        }
+        private AudioSource prevBgmSource {
+            get { return bgmSources[(curBgmIndex + 1) % 2]; }
+        }
+        private Coroutine fadeCoroutine;
+
+        [Space(10)]
         [SerializeField, Range(0, 1)] private float sfxVolume = 0.5f;
         public float SfxVolume {
             get { return sfxVolume; }
@@ -30,6 +56,18 @@ namespace KSIShareable.Audio
                 if (sfxSources != null) {
                     for(int i = 0; i < sfxSources.Length; i++) {
                         sfxSources[i].volume = sfxVolume;
+                    }
+                }
+            }
+        }
+        [SerializeField] private AudioMixerGroup sfxMixerGroup;
+        public AudioMixerGroup SfxMixerGroup {
+            get { return sfxMixerGroup; }
+            set {
+                sfxMixerGroup = value;
+                if (sfxSources != null) {
+                    for (int i = 0; i < sfxSources.Length; i++) {
+                        sfxSources[i].outputAudioMixerGroup = sfxMixerGroup;
                     }
                 }
             }
@@ -53,21 +91,62 @@ namespace KSIShareable.Audio
             // 배경음 플레이어 초기화
             GameObject bgmObject = new GameObject("BgmPlayer");
             bgmObject.transform.SetParent(this.transform);
-            bgmSource = bgmObject.AddComponent<AudioSource>();
-            bgmSource.playOnAwake = false;
-            bgmSource.loop = true;
-            bgmSource.volume = BgmVolume;
+
+            bgmSources = new AudioSource[2];
+            for (int i = 0; i < 2; i++) {
+                bgmSources[i] = bgmObject.AddComponent<AudioSource>();
+                bgmSources[i].playOnAwake = false;
+                bgmSources[i].loop = true;
+                bgmSources[i].volume = BgmVolume;
+            }
 
             // 효과음 플레이어 초기화
             GameObject sfxObject = new GameObject("SfxPlayer");
             sfxObject.transform.SetParent(this.transform);
-            sfxSources = new AudioSource[channelCount];
 
+            sfxSources = new AudioSource[channelCount];
             for(int i = 0; i < channelCount; i++) {
                 sfxSources[i] = sfxObject.AddComponent<AudioSource>();
                 sfxSources[i].playOnAwake = false;
                 sfxSources[i].volume = sfxVolume;
             }
+        }
+
+        public void FadeBgm(string key, float duration) {
+            AudioClip clip = audioLibrary.GetClip(key);
+            if (clip == null) {
+                Debug.LogWarning($"BGM '{key}' not found in AudioLibrary!");
+                return;
+            }
+
+            FadeBgm(clip, duration);
+        }
+        public void FadeBgm(AudioClip clip, float duration) {
+            if(fadeCoroutine != null) {
+                StopCoroutine(fadeCoroutine);
+            }
+            fadeCoroutine = StartCoroutine(CoFadeBgm(clip, duration));
+        }
+        private IEnumerator CoFadeBgm(AudioClip clip, float duration) {
+            curBgmIndex = (curBgmIndex + 1) % 2;
+
+            curBgmSource.clip = clip;
+            curBgmSource.volume = 0f;
+            curBgmSource.Play();
+            float prevBgmMaxVolume = prevBgmSource.volume;
+
+            float time = 0;
+            while (time < duration) {
+                time += Time.deltaTime;
+                float t = Mathf.Min(1f, time / duration);
+
+                prevBgmSource.volume = Mathf.Lerp(prevBgmMaxVolume, 0, t);
+                curBgmSource.volume = Mathf.Lerp(0, BgmVolume, t);
+
+                yield return null;
+            }
+
+            prevBgmSource.Stop();
         }
 
         public void PlayBgm(string key) {
@@ -77,17 +156,21 @@ namespace KSIShareable.Audio
                 return;
             }
 
-            bgmSource.clip = clip;
-            bgmSource.Play();
+            PlayBgm(clip);
+        }
+        public void PlayBgm(AudioClip clip) {
+            curBgmSource.clip = clip;
+            curBgmSource.volume = BgmVolume;
+            curBgmSource.Play();
         }
         public void StopBgm() {
-            bgmSource.Stop();
+            curBgmSource.Stop();
         }
         public void PauseBgm() {
-            bgmSource.Pause();
+            curBgmSource.Pause();
         }
         public void UnPauseBgm() {
-            bgmSource.UnPause();
+            curBgmSource.UnPause();
         }
 
         public void PlaySfx(string key) {
@@ -97,7 +180,10 @@ namespace KSIShareable.Audio
                 return;
             }
 
-            for(int i = 0; i < channelCount; i++) {
+            PlaySfx(clip);
+        }
+        public void PlaySfx(AudioClip clip) {
+            for (int i = 0; i < channelCount; i++) {
                 int loopIndex = (channelIndex + 1 + i) % channelCount;
 
                 if (sfxSources[loopIndex].isPlaying)
@@ -109,6 +195,5 @@ namespace KSIShareable.Audio
                 break;
             }
         }
-
     }
 }
