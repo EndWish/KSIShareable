@@ -98,6 +98,7 @@ namespace KSIShareable.Audio
                 bgmSources[i].playOnAwake = false;
                 bgmSources[i].loop = true;
                 bgmSources[i].volume = BgmVolume;
+                bgmSources[i].outputAudioMixerGroup = bgmMixerGroup;
             }
 
             // 효과음 플레이어 초기화
@@ -109,6 +110,7 @@ namespace KSIShareable.Audio
                 sfxSources[i] = sfxObject.AddComponent<AudioSource>();
                 sfxSources[i].playOnAwake = false;
                 sfxSources[i].volume = sfxVolume;
+                sfxSources[i].outputAudioMixerGroup = sfxMixerGroup;
             }
         }
 
@@ -142,6 +144,30 @@ namespace KSIShareable.Audio
 
                 prevBgmSource.volume = Mathf.Lerp(prevBgmMaxVolume, 0, t);
                 curBgmSource.volume = Mathf.Lerp(0, BgmVolume, t);
+
+                yield return null;
+            }
+
+            prevBgmSource.Stop();
+        }
+
+        public void FadeOutBgm(float duration) {
+            if (fadeCoroutine != null) {
+                StopCoroutine(fadeCoroutine);
+            }
+            fadeCoroutine = StartCoroutine(CoFadeOutBgm(duration));
+        }
+        private IEnumerator CoFadeOutBgm(float duration) {
+            curBgmIndex = (curBgmIndex + 1) % 2;
+            curBgmSource.Stop();
+            float prevBgmMaxVolume = prevBgmSource.volume;
+
+            float time = 0;
+            while (time < duration) {
+                time += Time.deltaTime;
+                float t = Mathf.Min(1f, time / duration);
+
+                prevBgmSource.volume = Mathf.Lerp(prevBgmMaxVolume, 0, t);
 
                 yield return null;
             }
