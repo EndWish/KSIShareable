@@ -1,8 +1,11 @@
 using UnityEditor;
+#if UNITY_EDITOR
 using UnityEngine;
+#endif
 
 namespace KSIShareable.Editor
 {
+#if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(RequiredAttribute))]
     public class RequiredDrawer : PropertyDrawer
     {
@@ -31,4 +34,5 @@ namespace KSIShareable.Editor
             GUI.backgroundColor = defaultColor;
         }
     }
+#endif
 }

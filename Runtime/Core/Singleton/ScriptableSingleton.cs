@@ -1,9 +1,13 @@
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace KSIShareable.Core
 {
+#if UNITY_EDITOR
     [InitializeOnLoad]
+#endif
     public abstract class ScriptableSingleton<T> : ScriptableObject where T : ScriptableObject
     {
         protected static T instance = null;
@@ -20,4 +24,5 @@ namespace KSIShareable.Core
             }
         }
     }
+
 }

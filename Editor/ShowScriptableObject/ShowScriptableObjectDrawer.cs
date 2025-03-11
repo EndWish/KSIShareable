@@ -1,8 +1,11 @@
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace KSIShareable.Editor
 {
+#if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(ShowScriptableObjectAttribute))]
     public class ShowScriptableObjectDrawer : PropertyDrawer
     {
@@ -62,4 +65,5 @@ namespace KSIShareable.Editor
             return height;
         }
     }
+#endif
 }
