@@ -40,6 +40,11 @@ namespace KSIShareable.Core
         public TValue GetPrefab(TKey key) {
             return library[key];
         }
+        public IEnumerable<TValue> GetAllPrefabs() {
+            foreach(var prefab in library.Values) {
+                yield return prefab;
+            }
+        }
 
 #if UNITY_EDITOR
     /// <summary>
