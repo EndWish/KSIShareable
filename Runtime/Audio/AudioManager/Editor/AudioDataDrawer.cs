@@ -14,12 +14,12 @@ namespace KSIShareable.Audio
 
             float halfWidth = position.width / 2;
 
-            // Key « µÂ
+            // Key ÌïÑÎìú
             SerializedProperty keyProperty = property.FindPropertyRelative("key");
             Rect keyRect = new Rect(position.x, position.y, halfWidth - 5, position.height);
             keyProperty.stringValue = EditorGUI.TextField(keyRect, keyProperty.stringValue);
 
-            // Clip « µÂ
+            // Clip ÌïÑÎìú
             SerializedProperty clipProperty = property.FindPropertyRelative("clip");
             Rect clipRect = new Rect(position.x + halfWidth + 5, position.y, halfWidth - 5, position.height);
             clipProperty.objectReferenceValue = EditorGUI.ObjectField(clipRect, clipProperty.objectReferenceValue, typeof(AudioClip), false);
@@ -28,7 +28,7 @@ namespace KSIShareable.Audio
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
-            return EditorGUIUtility.singleLineHeight; // «— ¡Ÿ ≥Ù¿Ã∑Œ º≥¡§
+            return EditorGUIUtility.singleLineHeight; // Ìïú Ï§Ñ ÎÜíÏù¥Î°ú ÏÑ§Ï†ï
         }
     }
 #endif
