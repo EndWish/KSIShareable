@@ -44,6 +44,7 @@ using KSIShareable;
 | [AudioManager](Runtime/Audio/AudioManager/README.md) | 오디오 클립의 재생 및 관리를 담당하는 싱글톤 오디오 매니저입니다. |
 | [ButtonActions](Runtime/UI/Button/ButtonActions/README.md) | UI 버튼에서 직접 호출할 수 있는 다양한 기능을 제공하여 추가적인 스크립트 작성을 줄이는 유틸리티 클래스입니다. |
 | [ConfirmationDialog](Runtime/UI/Dialog/ConfirmationDialog/README.md) | 사용자에게 확인 또는 취소를 요청하는 대화 상자를 구현한 컴포넌트입니다. |
+| [CheckDialog](Runtime/UI/Dialog/CheckDialog/README.md) | 사용자에게 정보를 알려주고 확인 액션을 유도하는 대화 상자를 구현한 컴포넌트입니다. |
 | [PriorityKeyHandler](Runtime/Input/PriorityKeyHandler/README.md) | 키 입력에 우선순위를 부여하여 처리할 수 있도록 도와주는 컴포넌트입니다. |
 | [ShowScriptableObject](Editor/ShowScriptableObject/README.md) | 인스펙터에서 ScriptableObject의 필드를 직접 편집할 수 있도록 도와주는 커스텀 프로퍼티 드로어입니다. |
 
