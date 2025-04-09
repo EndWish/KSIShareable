@@ -19,22 +19,22 @@
     {
       "displayName": "AudioManager",
       "description": "Example",
-      "path": "Samples/AudioManager"
+      "path": "Samples~/AudioManager"
     },
     {
       "displayName": "ButtonActions",
       "description": "Example",
-      "path": "Samples/ButtonActions"
+      "path": "Samples~/ButtonActions"
     },
     {
       "displayName": "ConfirmationDialog",
       "description": "Example",
-      "path": "Samples/ConfirmationDialog"
+      "path": "Samples~/ConfirmationDialog"
     },
     {
       "displayName": "PriorityKeyHandler",
       "description": "Example",
-      "path": "Samples/PriorityKeyHandler"
+      "path": "Samples~/PriorityKeyHandler"
     }
   ]
 
