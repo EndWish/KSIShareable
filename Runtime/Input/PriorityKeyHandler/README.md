@@ -35,10 +35,10 @@ handlerB.Priority = 5;  // handlerA가 우선순위가 더 높으므로 handlerB
 ```
 
 ### 예시
-![alt text](READMEImage/ExampleOfUse.gif)  
+![alt text](READMEImage~/ExampleOfUse.gif)  
 
 ### 컴포넌트
-![alt text](READMEImage/Component.png)  
+![alt text](READMEImage~/Component.png)  
 #### Key - 입력을 감지할 키 (★같은 키 끼리만 우선순위를 비교하며, 키가 다를 경우 서로 간섭하지 않는다.)
 #### Priority - 우선순위 (숫자가 높은 수록 우선순위도 높다)
 #### Top Priority On Enable - 체크하면 해당 컴포넌트가 활성화될때 현재 최상위 우선순위보다 1높은 우선순위 값을 가지게 된다.

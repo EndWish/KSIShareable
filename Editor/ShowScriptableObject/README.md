@@ -17,7 +17,8 @@
 - **인스펙터에서 `ScriptableObject`를 직접 편집 가능**
 - **객체가 없는 경우 기본 필드만 표시**
 - **객체가 있는 경우 내부 속성을 계층적으로 표시**
-![alt text](READMEImage/ExampleOfUse.gif) 
+![alt text](READMEImage~/ExampleOfUse.gif) 
+
 
 ## 사용 방법  
 1. `[ShowScriptableObject]`를 사용하여 `ScriptableObject` 필드를 인스펙터에서 확장할 수 있도록 설정합니다.

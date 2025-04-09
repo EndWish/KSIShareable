@@ -30,12 +30,12 @@
 ## 사용 방법
 
 ### 예시
-![alt text](READMEImage/ExampleOfUse.gif)  
+![alt text](READMEImage~/ExampleOfUse.gif)  
 
 ### 컴포넌트
-![alt text](READMEImage/Component01.png)  
+![alt text](READMEImage~/Component01.png)  
 
-![alt text](READMEImage/Component02.png)  
+![alt text](READMEImage~/Component02.png)  
 
 ## API
 

@@ -1,8 +1,11 @@
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace KSIShareable.Audio
 {
+#if UNITY_EDITOR
     [CustomEditor(typeof(AudioLibrary))]
     public class AudioLibraryEditor : UnityEditor.Editor
     {
@@ -16,4 +19,5 @@ namespace KSIShareable.Audio
             }
         }
     }
+#endif
 }

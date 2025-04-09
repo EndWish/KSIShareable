@@ -27,10 +27,10 @@
 
 ## 사용 방법
 ### 예시
-![alt text](READMEImage/ExampleOfUse.gif)  
+![alt text](READMEImage~/ExampleOfUse.gif)  
 
 ### 컴포넌트  
-![alt text](READMEImage/Component.png)  
+![alt text](READMEImage~/Component.png)  
 #### Close Action - 대화 상자의 종료 시 액션(`Destroy` / `Disable` / `Nothing`) 설정 가능  
 #### OnClickYes - 확인 버튼 클릭 시 호출하는 이벤트  
 #### OnClickNo - 취소 버튼 클릭 시 호출하는 이벤트  

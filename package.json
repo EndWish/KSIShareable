@@ -1,6 +1,6 @@
 {
   "name": "com.kimsiin.ksishareable",
-  "version": "0.1.1",
+  "version": "1.1.0",
   "displayName": "KSIShareable",
   "description": "A project that provides a system to help game development.",
   "unity": "2022.3",
@@ -19,22 +19,22 @@
     {
       "displayName": "AudioManager",
       "description": "Example",
-      "path": "Samples/AudioManager"
+      "path": "~Samples/AudioManager"
     },
     {
       "displayName": "ButtonActions",
       "description": "Example",
-      "path": "Samples/ButtonActions"
+      "path": "~Samples/ButtonActions"
     },
     {
       "displayName": "ConfirmationDialog",
       "description": "Example",
-      "path": "Samples/ConfirmationDialog"
+      "path": "~Samples/ConfirmationDialog"
     },
     {
       "displayName": "PriorityKeyHandler",
       "description": "Example",
-      "path": "Samples/PriorityKeyHandler"
+      "path": "~Samples/PriorityKeyHandler"
     }
   ]
 
