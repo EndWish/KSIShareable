@@ -88,7 +88,7 @@ namespace KSIShareable.Audio
         }
 
         private void Init() {
-            // ¹è°æÀ½ ÇÃ·¹ÀÌ¾î ÃÊ±âÈ­
+            // ë°°ê²½ìŒ í”Œë ˆì´ì–´ ì´ˆê¸°í™”
             GameObject bgmObject = new GameObject("BgmPlayer");
             bgmObject.transform.SetParent(this.transform);
 
@@ -101,7 +101,7 @@ namespace KSIShareable.Audio
                 bgmSources[i].outputAudioMixerGroup = bgmMixerGroup;
             }
 
-            // È¿°úÀ½ ÇÃ·¹ÀÌ¾î ÃÊ±âÈ­
+            // íš¨ê³¼ìŒ í”Œë ˆì´ì–´ ì´ˆê¸°í™”
             GameObject sfxObject = new GameObject("SfxPlayer");
             sfxObject.transform.SetParent(this.transform);
 
