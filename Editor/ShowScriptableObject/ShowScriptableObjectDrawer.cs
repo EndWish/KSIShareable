@@ -1,39 +1,42 @@
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace KSIShareable.Editor
 {
+#if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(ShowScriptableObjectAttribute))]
     public class ShowScriptableObjectDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
             EditorGUI.BeginProperty(position, label, property);
 
-            // ±âº» ÇÊµå¸¦ ±×¸³´Ï´Ù.
+            // ê¸°ë³¸ í•„ë“œë¥¼ ê·¸ë¦½ë‹ˆë‹¤.
             float singleLineHeight = EditorGUIUtility.singleLineHeight;
             Rect propertyRect = new Rect(position.x, position.y, position.width, singleLineHeight);
             EditorGUI.PropertyField(propertyRect, property, label, true);
 
-            // ScriptableObject°¡ ¿¬°áµÈ °æ¿ì¿¡¸¸ Ãß°¡ ÇÊµåµéÀ» ±×¸³´Ï´Ù.
+            // ScriptableObjectê°€ ì—°ê²°ëœ ê²½ìš°ì—ë§Œ ì¶”ê°€ í•„ë“œë“¤ì„ ê·¸ë¦½ë‹ˆë‹¤.
             if (property.objectReferenceValue != null && property.objectReferenceValue is ScriptableObject) {
                 ScriptableObject scriptableObject = (ScriptableObject)property.objectReferenceValue;
                 SerializedObject serializedObject = new SerializedObject(scriptableObject);
 
                 SerializedProperty iterator = serializedObject.GetIterator();
-                iterator.NextVisible(true); // Ã¹ ¹øÂ° ÇÊµå´Â ¹«½Ã (½ºÅ©¸³Æ® ÇÊµå)
+                iterator.NextVisible(true); // ì²« ë²ˆì§¸ í•„ë“œëŠ” ë¬´ì‹œ (ìŠ¤í¬ë¦½íŠ¸ í•„ë“œ)
 
                 EditorGUI.indentLevel++;
                 while (iterator.NextVisible(false)) {
                     position.y += singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
 
-                    // ÇöÀç ÇÊµåÀÇ ³ôÀÌ¸¦ °è»ê
+                    // í˜„ì¬ í•„ë“œì˜ ë†’ì´ë¥¼ ê³„ì‚°
                     float propertyHeight = EditorGUI.GetPropertyHeight(iterator, true);
 
                     Rect fieldRect = new Rect(position.x, position.y, position.width, propertyHeight);
                     EditorGUI.PropertyField(fieldRect, iterator, true);
 
-                    // ´ÙÀ½ ÇÊµå¸¦ ±×¸± À§Ä¡¸¦ ¹İ¿µ (ÇÊµå ³ôÀÌ¸¸Å­ Ãß°¡)
-                    position.y += propertyHeight - singleLineHeight; // ÀÌ¹Ì ±âº» ¶óÀÎÀ» ´õÇßÀ¸¹Ç·Î ±× ³ôÀÌ¸¸Å­¸¸ Ãß°¡
+                    // ë‹¤ìŒ í•„ë“œë¥¼ ê·¸ë¦´ ìœ„ì¹˜ë¥¼ ë°˜ì˜ (í•„ë“œ ë†’ì´ë§Œí¼ ì¶”ê°€)
+                    position.y += propertyHeight - singleLineHeight; // ì´ë¯¸ ê¸°ë³¸ ë¼ì¸ì„ ë”í–ˆìœ¼ë¯€ë¡œ ê·¸ ë†’ì´ë§Œí¼ë§Œ ì¶”ê°€
                 }
                 EditorGUI.indentLevel--;
 
@@ -44,17 +47,17 @@ namespace KSIShareable.Editor
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
-            float height = EditorGUIUtility.singleLineHeight; // ±âº» ÇÊµå ³ôÀÌ
+            float height = EditorGUIUtility.singleLineHeight; // ê¸°ë³¸ í•„ë“œ ë†’ì´
 
             if (property.objectReferenceValue != null && property.objectReferenceValue is ScriptableObject) {
                 ScriptableObject scriptableObject = (ScriptableObject)property.objectReferenceValue;
                 SerializedObject serializedObject = new SerializedObject(scriptableObject);
 
                 SerializedProperty iterator = serializedObject.GetIterator();
-                iterator.NextVisible(true); // Ã¹ ¹øÂ° ÇÊµå (½ºÅ©¸³Æ®) ¹«½Ã
+                iterator.NextVisible(true); // ì²« ë²ˆì§¸ í•„ë“œ (ìŠ¤í¬ë¦½íŠ¸) ë¬´ì‹œ
 
                 while (iterator.NextVisible(false)) {
-                    // °¢ ÇÊµåÀÇ ½ÇÁ¦ ³ôÀÌ¸¦ µ¿ÀûÀ¸·Î °è»ê
+                    // ê° í•„ë“œì˜ ì‹¤ì œ ë†’ì´ë¥¼ ë™ì ìœ¼ë¡œ ê³„ì‚°
                     height += EditorGUI.GetPropertyHeight(iterator, true) + EditorGUIUtility.standardVerticalSpacing;
                 }
             }
@@ -62,4 +65,5 @@ namespace KSIShareable.Editor
             return height;
         }
     }
+#endif
 }
