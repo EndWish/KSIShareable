@@ -276,8 +276,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: KSIShareable.UI.Dialog.ConfirmationDialog, KSIShareable.UI.Dialog
+      - m_Target: {fileID: 6648983537828238829}
+        m_TargetAssemblyTypeName: KSIShareable.UI.Dialog.CheckDialog, KSIShareable
         m_MethodName: ActOnClickYes
         m_Mode: 1
         m_Arguments:

@@ -11,17 +11,17 @@ namespace KSIShareable.UI.Dialog
 
         public UnityEvent OnClickCheck;
 
-        protected CheckDialog Init(UnityAction actionOnYes) {
+        protected CheckDialog Init(UnityAction actionOnCheck) {
             OnClickCheck.RemoveAllListeners();
-            if (actionOnYes != null)
-                this.OnClickCheck.AddListener(actionOnYes);
+            if (actionOnCheck != null)
+                this.OnClickCheck.AddListener(actionOnCheck);
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(dialogRectTransform);
 
             return this;
         }
 
-        public void ActOnClickYes() {
+        public void ActOnClickCheck() {
             OnClickCheck?.Invoke();
             ExecuteCloseAction();
         }
