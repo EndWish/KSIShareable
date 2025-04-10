@@ -14,17 +14,8 @@ namespace KSIShareable.UI.Dialog
         [SerializeField] protected LocalizeStringEvent checkBtnText;
 
         public LocalizeCheckDialog Init(LocalizedString questionText, LocalizedString checkBtnText, UnityAction actionOnCheck) {
-            if (questionText != null) {
-                this.questionText.StringReference.SetReference(questionText.TableReference, questionText.TableEntryReference);
-                this.questionText.StringReference.Clear();
-                this.questionText.StringReference.AddRange(questionText);
-            }
-
-            if (checkBtnText != null) {
-                this.checkBtnText.StringReference.SetReference(checkBtnText.TableReference, checkBtnText.TableEntryReference);
-                this.checkBtnText.StringReference.Clear();
-                this.checkBtnText.StringReference.AddRange(checkBtnText);
-            }
+            this.questionText.StringReference = questionText;
+            this.checkBtnText.StringReference = checkBtnText;
 
             base.Init(actionOnCheck);
 
