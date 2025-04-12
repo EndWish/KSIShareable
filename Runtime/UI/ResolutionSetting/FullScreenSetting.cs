@@ -34,6 +34,7 @@ namespace KSIShareable.UI
                     Dropdown.value = i;
                 }
             }
+            Dropdown.RefreshShownValue();
 
 #if DEBUG
             if(index == -1) {
