@@ -7,6 +7,7 @@ namespace KSIShareable.UI
     public class ResolutionSetting : MonoBehaviour
     {
         public TMP_Dropdown Dropdown;
+        [SerializeField] private bool Descending;
         private List<Resolution> resolutions = new List<Resolution>();
         private int index;
 
@@ -16,6 +17,8 @@ namespace KSIShareable.UI
 
         private void InitUI() {
             resolutions.AddRange(Screen.resolutions);
+            if (Descending)
+                resolutions.Reverse();
 
             Dropdown.options.Clear();
             foreach (Resolution resolution in resolutions) {
