@@ -1,12 +1,12 @@
+[<- 상위 페이지로 가기](../../../../README.md)  
+[<- CheckDialog](../CheckDialog/README.md)  
+
 # ConfirmationDialog
 
 ## 목차
 - [개요](#개요)
 - [특징](#특징)
 - [사용 방법](#사용-방법)
-  - [기본 사용법](#기본-사용법)
-  - [버튼 커스터마이징](#버튼-커스터마이징)
-  - [대화 상자 스타일 변경](#대화-상자-스타일-변경)
 - [API](#api)
   - [BasicConfirmationDialog](#basicconfirmationdialog)
   - [LocalizeConfirmationDialog](#localizeconfirmationdialog)

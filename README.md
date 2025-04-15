@@ -18,10 +18,10 @@ KSIShareable은 Git URL을 이용하여 Unity Package Manager(UPM)에서 설치�
 
 ### 설치 방법 (Unity Package Manager 사용)
 1. Unity를 실행하고 `Window > Package Manager`로 이동합니다.
-2. 좌측 상단의 `+` 버튼을 클릭하고 **"Add package from git URL..."**을 선택합니다.
+2. 좌측 상단의 `+` 버튼을 클릭하고 **"Add package from git URL..."** 을 선택합니다.
 3. 아래의 Git URL을 입력한 후 **"Add"** 버튼을 클릭합니다.
    ```
-   https://github.com/EndWish/KSIShareable.git#develop
+   https://github.com/EndWish/KSIShareable.git
    ```
 4. 설치가 완료되면 `KSIShareable` 패키지를 사용할 수 있습니다.
 
@@ -44,8 +44,12 @@ using KSIShareable;
 | [AudioManager](Runtime/Audio/AudioManager/README.md) | 오디오 클립의 재생 및 관리를 담당하는 싱글톤 오디오 매니저입니다. |
 | [ButtonActions](Runtime/UI/Button/ButtonActions/README.md) | UI 버튼에서 직접 호출할 수 있는 다양한 기능을 제공하여 추가적인 스크립트 작성을 줄이는 유틸리티 클래스입니다. |
 | [ConfirmationDialog](Runtime/UI/Dialog/ConfirmationDialog/README.md) | 사용자에게 확인 또는 취소를 요청하는 대화 상자를 구현한 컴포넌트입니다. |
+| [CheckDialog](Runtime/UI/Dialog/CheckDialog/README.md) | 사용자에게 정보를 알려주고 확인 액션을 유도하는 대화 상자를 구현한 컴포넌트입니다. |
+| [Resolution/FullScreen Setting](Runtime/UI/ResolutionSetting/README.md) | 해상도와 전체화면,창모드를 Dropdown형태로 쉽게 제공할 수 있도록 구현된 컴포넌트입니다.
+| LayoutAspectRatioFitter | `AspectRatioFitter`에 의해 변경된 길이를 `Layout Element`의 Min Width/Height에 적용하여 다른 `Layout Element`와 겹치지 않도록 해주는 컴포넌트 입니다.
 | [PriorityKeyHandler](Runtime/Input/PriorityKeyHandler/README.md) | 키 입력에 우선순위를 부여하여 처리할 수 있도록 도와주는 컴포넌트입니다. |
 | [ShowScriptableObject](Editor/ShowScriptableObject/README.md) | 인스펙터에서 ScriptableObject의 필드를 직접 편집할 수 있도록 도와주는 커스텀 프로퍼티 드로어입니다. |
+
 
 ---
 

@@ -14,24 +14,10 @@ namespace KSIShareable.UI.Dialog
         [SerializeField] protected LocalizeStringEvent yesBtnText;
         [SerializeField] protected LocalizeStringEvent noBtnText;
 
-        public ConfirmationDialog Init(LocalizedString questionText, LocalizedString yesBtnText, LocalizedString noBtnText, UnityAction actionOnYes, UnityAction actionOnNo) {
-            if(questionText != null) {
-                this.questionText.StringReference.SetReference(questionText.TableReference, questionText.TableEntryReference);
-                this.questionText.StringReference.Clear();
-                this.questionText.StringReference.AddRange(questionText);
-            }
-
-            if(yesBtnText != null) {
-                this.yesBtnText.StringReference.SetReference(yesBtnText.TableReference, yesBtnText.TableEntryReference);
-                this.yesBtnText.StringReference.Clear();
-                this.yesBtnText.StringReference.AddRange(yesBtnText);
-            }
-
-            if(noBtnText != null) {
-                this.noBtnText.StringReference.SetReference(noBtnText.TableReference, noBtnText.TableEntryReference);
-                this.noBtnText.StringReference.Clear();
-                this.noBtnText.StringReference.AddRange(noBtnText);
-            }
+        public LocalizeConfirmationDialog Init(LocalizedString questionText, LocalizedString yesBtnText, LocalizedString noBtnText, UnityAction actionOnYes, UnityAction actionOnNo) {
+            this.questionText.StringReference = questionText;
+            this.yesBtnText.StringReference = yesBtnText;
+            this.noBtnText.StringReference = noBtnText;
 
             base.Init(actionOnYes, actionOnNo);
 

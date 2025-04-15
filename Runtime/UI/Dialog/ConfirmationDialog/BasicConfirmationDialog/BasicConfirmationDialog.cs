@@ -12,7 +12,7 @@ namespace KSIShareable.UI.Dialog
         [SerializeField] protected TextMeshProUGUI yesBtnText;
         [SerializeField] protected TextMeshProUGUI noBtnText;
 
-        public ConfirmationDialog Init(string questionText, string yesBtnText, string noBtnText, UnityAction actionOnYes, UnityAction actionOnNo) {
+        public BasicConfirmationDialog Init(string questionText, string yesBtnText, string noBtnText, UnityAction actionOnYes, UnityAction actionOnNo) {
             this.questionText.text = questionText;
             this.yesBtnText.text = yesBtnText;
             this.noBtnText.text = noBtnText;
